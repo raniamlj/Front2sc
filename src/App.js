@@ -1,23 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import Hello from "./components/hello";
+import Graphique from "./components/graphique";
+
+
+/*function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('Le lien a été cliqué.');
+    (req, res) => {fetch("http://localhost:4002/data")
+    .then(res => res.json())
+    .then(data => {res.send({ data });});}
+
+  }
+
+  return (
+    <a href="#" onClick={handleClick}>
+      Get Data
+    </a>
+  );
+}*/
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Hello /> 
+        <Graphique></Graphique>
+        
+             
+
     </div>
   );
 }
