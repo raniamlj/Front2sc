@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import axios from 'axios';
 
-
-const data = [
+/*const data = [
     {
       name: 'Page A',
       uv: 4000,
@@ -45,11 +45,44 @@ const data = [
       pv: 4300,
       amt: 2100,
     },
-  ];
+  ];*/
+
+  /*data = () =>{
+    const response = fetch('http://localhost:4002/data')
+    return response.json();
+  }*/
+
+  async function getDonnees() {
+    try {
+      const response = await axios.get('http://localhost:4002/data');
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 
 class Graphique extends PureComponent {
     static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
+    state={
+      data : {
+        name: "A",
+        uv: "00",
+        pv: "00",
+        amt: "00",
+      },
+      
+    }
+
+    componentDidMount(){
+      getDonnees().then(response =>{
+        this.setState({
+          data : response.data
+        })
+
+      } );
+    }
 
 
     /*const renderLineChart = (
@@ -67,7 +100,7 @@ class Graphique extends PureComponent {
         <LineChart
         width={500}
         height={300}
-        data={data}
+        data={this.state.data.Feuille1}
         margin={{
           top: 5,
           right: 30,
